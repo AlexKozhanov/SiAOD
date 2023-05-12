@@ -45,26 +45,19 @@ if __name__ == "__main__":
     command = input("Номер задания: ")
     match command.split():
         case ["1"]:
-            R1 = input('Введите значения сопротивлений R1: ')
-            R2 = input('R2: ')
-            R3 = input('R3: ')
-            R1 = float(R1)
-            R2 = float(R2)
-            R3 = float(R3)
+            R1 = float(input('Введите значения сопротивлений R1: '))
+            R2 = float(input('R2: '))
+            R3 = float(input('R3: '))
+
             print(f'Значение общего сопротивления = \'{calc_total_parallel_resist(R1,R2,R3)}\' Ом')
         case ["2"]:
-            V = input('Введите значения сопротивлений R1: ')
-            V1 = input('Введите значения сопротивлений R1: ')
-            T1 = input('Введите значения сопротивлений R1: ')
-            T2 = input('Введите значения сопротивлений R1: ')
-            V = float(V)
-            V1 = float(V1)
-            T1 = float(T1)
-            T2 = float(T2)
+            V = float(input('Введите значения сопротивлений R1: '))
+            V1 = float(input('Введите значения сопротивлений R1: '))
+            T1 = float(input('Введите значения сопротивлений R1: '))
+            T2 = float(input('Введите значения сопротивлений R1: '))
             print(f'путь лодки = \'{calc_boat_path(V, V1, T1, T2)}\' Км')
         case ["3"]:
-            X = input('Введите значение x: ')
-            X = float(X)
+            X = float(input('Введите значение x: '))
             print(f'Найденное значение функции, F(\'{X}\') = \'{calc_function(X)}\'')
         case ["4"]:
             A = int(input('Введите значение x: '))
