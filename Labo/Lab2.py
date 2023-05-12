@@ -1,56 +1,79 @@
 import math as math
-def calc_total_parallel_resist(r1: float, r2: float, r3: float)-> float:
-    # 1) Сопротивления
-    # Исходные данные, вводимые с клавиатуры: R1, R2, R3 значения (вещественные числа).
+import numpy as np
+def calc_decimal1(x: float, y: float)-> float:
+    # 1) Дробь1
+    # Исходные данные, вводимые с клавиатуры: значения x, y (вещественные числа).
     # На экране выводится найденное значение выражения.
-    R_rez=1 / (1 / r1 + 1 / r2 + 1 / r3)
+    R_rez = (1 + math.sin(math.sqrt(x+1))) / (math.cos(12*y - 4))
     return R_rez
 
-def calc_boat_path(v: float, v1: float, t1: float, t2: float)-> float:
-    # 2) Вычисление пути  лодки
-    # Исходные данные, вводимые с клавиатуры: значения V, V1, t1, t2 (вещественные числа).
-    # На экране выводится найденное значение пути.
-    S_rez = v * t1 + (v - v1) * t2
-    return S_rez
+def calc_decimal2(x: float, y: float)-> float:
+    # 2) Дробь2
+    # Исходные данные, вводимые с клавиатуры: значения x, y (вещественные числа).
+    # На экране выводится найденное значение выражения.
+    R_rez = (1 + math.pow(math.sin(x + y), 2)) \
+            / (2 + abs(x - ((2 * x) / (1 + math.pow(x, 2) * math.pow(y, 2))))) \
+            + x
+    return R_rez
 
-def calc_function(x: float)-> float:
-    # 3) Вычисление значения функции
-    # Исходные данные, вводимые с клавиатуры: значение x (вещественное числа).
-    # На экране выводится найденное значение функции.
-    if x <= 3:
-        x_rez = (-1 * x**2) + 3 * x + 9
+def calc_function1():
+    # 3) Оператор match (Аналог switch в Python)
+    # Исходные данные, вводимые с клавиатуры: действительное число x, номер действия.
+    # На экране выводится:
+    # - значение выражения (если данные введены корректно)
+    # - сообщение, что действие выполнить невозможно
+    # - сообщение, что введен неверный номер действия
+    z_x = float(input('Введите X: '))
+    z_command = input("Номер действия, где "
+                      "1-квадрат 2-корень 3-корень3степени 4-модуль 5-натурлог")
+    match z_command.split():
+        case ["1"]:
+            a = math.pow(z_x, 2)
+            print(f'Квадрат = \'{a}\'')
+        case ["2"]:
+            if z_x > 0:
+                b = math.sqrt(z_x)
+                print(f'Корень из X = \'{b}\'')
+            else:
+                print('Действие выполнить невозможно')
+        case ["3"]:
+            c = np.cbrt(z_x)
+            print(f'Кубический корень из X = \'{c}\'')
+        case ["4"]:
+            print(f'Кубический корень из X = \'{abs(z_x)}\'')
+        case ["5"]:
+            print(f'Натуральный логарифм X = \'{math.log(z_x)}\'')
+        case _:
+            print("Введен неверный номер действия")
+def calc_decimal3(c):
+    # 4) Дробь3
+    rez = 1
+    z_list = [2, 4, 8, 16, 32, 64]
+    for i in z_list:
+        if c == i:
+            rez += 1
+    if rez == 1:
+        for i in z_list:
+            rez *= (c - i + 1) / (c - i)
+        print(f'Результат = \'{rez}\'')
     else:
-        x_rez = math.sin(x) / (x - 9)
-    return x_rez
-def check_multiplicity_3(a: int)-> int:
-    # 4) Проверка кратности 3
-    a_rez = 0
-    if a != 0 and a % 3 > 0:
-        a_rez = 1 #'число не кратно 3'
-    else:
-        if a != 0 and a % 3 == 0:
-            a_rez = 10 #'число кратно 3'
-    return a_rez
-def factorial(number: int):
-    # 5) Факториал
-    cos_sum = float(0)
-    sin_sum = float(0)
-    factorial = float(1)
-    for i in range(1, number):
-        cos_sum += math.cos(i)
-        sin_sum += math.sin(i)
-        factorial *= cos_sum / sin_sum
-    return factorial
+        print('Деление на 0')
+
 if __name__ == "__main__":
     command = input("Номер задания: ")
     match command.split():
         case ["1"]:
-            print(f'Значение общего сопротивления = \'{}\' Ом')
+            X = float(input('Введите X: '))
+            Y = float(input('Введите Y: '))
+            print(f'Результат = \'{calc_decimal1(X, Y)}\'')
         case ["2"]:
-            print(f'путь лодки = \'{}\' Км')
+            X = float(input('Введите X: '))
+            Y = float(input('Введите Y: '))
+            print(f'Результат = \'{calc_decimal2(X, Y)}\'')
         case ["3"]:
-            print(f'Найденное значение функции, F(\'{X}\') = \'{}\'')
+            calc_function1()
         case ["4"]:
-            print('Только два числа кратны 3')
-        case["5"]:
-            Number = int(input('Введите число N: '))
+            X = int(input('Введите X: '))
+            calc_decimal3(X)
+        case _:
+            print('Введи другое')
