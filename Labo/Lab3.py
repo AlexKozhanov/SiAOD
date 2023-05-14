@@ -26,10 +26,10 @@ class Triangle:
 
 def main():
     triangle1 = Triangle()
-    triangle2 = Triangle(6, 8, 10)
-    triangle3 = Triangle(1, 3, 2)
-    triangle4 = Triangle(-10, 400, 700)
-    triangle5 = Triangle(15, 10, 8)
+    triangle2 = Triangle(1, 2, 3)
+    triangle3 = Triangle(10, 5, 7)
+    triangle4 = Triangle(-5, 4, 7)
+    triangle5 = Triangle(20, 9, 12)
     list_triangle = [
         triangle1,
         triangle2,

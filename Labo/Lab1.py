@@ -48,14 +48,13 @@ if __name__ == "__main__":
             R1 = float(input('Введите значения сопротивлений R1: '))
             R2 = float(input('R2: '))
             R3 = float(input('R3: '))
-
             print(f'Значение общего сопротивления = \'{calc_total_parallel_resist(R1,R2,R3)}\' Ом')
         case ["2"]:
-            V = float(input('Введите значения сопротивлений R1: '))
-            V1 = float(input('Введите значения сопротивлений R1: '))
-            T1 = float(input('Введите значения сопротивлений R1: '))
-            T2 = float(input('Введите значения сопротивлений R1: '))
-            print(f'путь лодки = \'{calc_boat_path(V, V1, T1, T2)}\' Км')
+            V = float(input('Введите скорость лодки V: '))
+            V1 = float(input('Введите скорость течения V1: '))
+            T1 = float(input('Введите время движения по озеру T1: '))
+            T2 = float(input('Введите время движения по реке T2: '))
+            print(f'Путь лодки = \'{calc_boat_path(V, V1, T1, T2)}\' Км')
         case ["3"]:
             X = float(input('Введите значение x: '))
             print(f'Найденное значение функции, F(\'{X}\') = \'{calc_function(X)}\'')
